@@ -1,13 +1,30 @@
 const express = require("express");
-const routes = require("./routes/Start");
-const app = express();
-const port = 3000;
+const bodyParser = require("body-parser");
 const cors = require("cors");
+const ip = require("ip");
 
-app.use(express.json());
-app.use("/", routes);
+const app = express();
+const ipAddr = ip.address();
+const port = 3000;
+
+let lastHouseVisited = "Slytherin";
+
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+// Route pour app.get
+app.get("/house", (req, res) => {
+  res.json({ data: lastHouseVisited });
+});
+
+// Route pour app.post
+app.post("/house", (req, res) => {
+  console.log(req.body);
+  lastHouseVisited = req.body.house;
+  res.json({ data: lastHouseVisited });
+});
+
+app.listen(port, async () => {
+  console.log(`Server running at http://${ipAddr}:${port}`);
 });

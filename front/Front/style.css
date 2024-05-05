@@ -1,0 +1,175 @@
+* {
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  
+  body {
+    /*j'ai mis ses elements pour recentrer ma navabar */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    /* j ai preferé mettre le background dans le css car ca me paraissait plus simple */
+    background-image: url('WBG_Mystical_Wallpapers_Hogwarts_16x9_03_LA-1200x900.png');
+    background-size: cover;
+    margin: 0;
+  }
+  
+  nav {
+    padding: 0 20px;
+    border-radius: 40px;
+    box-shadow: 0 10px 40px rgba(159, 162, 177, 0.8);
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+    position: relative;
+    margin-top: 20px;
+  }
+  
+  .nav-item {
+    color: #83818c;
+    font-family: "Poppins", sans-serif;
+    padding: 20px;
+    margin: 0 6px;
+    position: relative;
+  }
+  
+  .nav-item::before {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    height: 5px;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    left: 0;
+    transition: 0.3s;
+  }
+  
+  .nav-item:not(.is-active):hover:before {
+    bottom: 0;
+  }
+  
+  .nav-item:not(.is-active):hover {
+    color: #333;
+  }
+  
+  .nav-indicator {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    transition: 0.4s;
+    border-radius: 8px 8px 0 0;
+  }
+  /* Styles pour le bouton*/
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 300px;
+  }
+  /* Styles pour le logo */
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+  }
+  /*animation glitch (que j'ai repris sur un tuto internet je l'avoue, mais j'ai compris le code) */
+  button,
+button::after {
+ padding: 16px 20px;
+ font-size: 18px;
+ background: linear-gradient(45deg, transparent 5%, #333 5%);
+ border: 0;
+ color: #fff;
+ letter-spacing: 3px;
+ line-height: 1;
+ box-shadow: 6px 0px 0px #eef3f4;
+ outline: transparent;
+ position: relative;
+}
+
+button::after {
+ --slice-0: inset(50% 50% 50% 50%);
+ --slice-1: inset(80% -6px 0 0);
+ --slice-2: inset(50% -6px 30% 0);
+ --slice-3: inset(10% -6px 85% 0);
+ --slice-4: inset(40% -6px 43% 0);
+ --slice-5: inset(80% -6px 5% 0);
+ content: "HOVER ME";
+ display: block;
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: linear-gradient(45deg, transparent 3%, #fbfcfc 3%, #fafcfc 5%, #ff013c 5%);
+ text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #ffffff;
+ clip-path: var(--slice-0);
+}
+
+button:hover::after {
+ animation: 1s glitch;
+ animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+ 0% {
+  clip-path: var(--slice-1);
+  transform: translate(-20px, -10px);
+ }
+
+ 10% {
+  clip-path: var(--slice-3);
+  transform: translate(10px, 10px);
+ }
+
+ 20% {
+  clip-path: var(--slice-1);
+  transform: translate(-10px, 10px);
+ }
+
+ 30% {
+  clip-path: var(--slice-3);
+  transform: translate(0px, 5px);
+ }
+
+ 40% {
+  clip-path: var(--slice-2);
+  transform: translate(-5px, 0px);
+ }
+
+ 50% {
+  clip-path: var(--slice-3);
+  transform: translate(5px, 0px);
+ }
+
+ 60% {
+  clip-path: var(--slice-4);
+  transform: translate(5px, 10px);
+ }
+
+ 70% {
+  clip-path: var(--slice-2);
+  transform: translate(-10px, 10px);
+ }
+
+ 80% {
+  clip-path: var(--slice-5);
+  transform: translate(20px, -10px);
+ }
+
+ 90% {
+  clip-path: var(--slice-1);
+  transform: translate(-10px, 0px);
+ }
+
+ 100% {
+  clip-path: var(--slice-1);
+  transform: translate(0);
+ }
+}
+
+

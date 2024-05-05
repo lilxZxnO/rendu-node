@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <!--ma navbar-->
+      <nav>
+        <!--les liens-->
+        <ul>
+          <a
+            href="index.html"
+            class="nav-item is-active"
+            data-active-color="orange"
+            data-target="Home"
+            >Home</a
+          >
+          <a
+            href="Characters.html"
+            class="nav-item"
+            data-active-color="green"
+            data-target="Collection"
+            >Characters</a
+          >
+          <a
+            href="#"
+            class="nav-item"
+            data-active-color="blue"
+            data-target="Summon"
+            >Summon</a
+          >
+          <a
+            href="#"
+            class="nav-item"
+            data-active-color="red"
+            data-target="Shop"
+            >Shop</a
+          >
+          <a
+            href="#"
+            class="nav-item"
+            data-active-color="rebeccapurple"
+            data-target="Contact"
+            >Contact</a
+          >
+          <span class="nav-indicator"></span>
+        </ul>
+      </nav>
+    </section>
+    <!--le logo-->
+    <div class="logo">
+      <img src="harry-potter-logo-transparent-1.png" alt="" />
+    </div>
+    <!--le boutton-->
+    <div class="button">
+      <button>Click</button>
+    </div>
+
+    <script>
+      const indicator = document.querySelector(".nav-indicator");
+      const items = document.querySelectorAll(".nav-item");
+      function handleIndicator(el) {
+        items.forEach((item) => {
+          item.classList.remove("is-active");
+          item.removeAttribute("style");
+        });
+
+        indicator.style.width = `${el.offsetWidth}px`;
+        indicator.style.backgroundColor = el.getAttribute("data-active-color");
+        indicator.style.left = `${el.offsetLeft}px`;
+
+        el.classList.add("is-active");
+        el.style.color = el.getAttribute("data-active-color");
+      }
+
+      items.forEach((item, index) => {
+        item.addEventListener("click", (e) => {
+          handleIndicator(e.target);
+        });
+        item.classList.contains("is-active") && handleIndicator(item);
+      });
+    </script>
+  </body>
+</html>
